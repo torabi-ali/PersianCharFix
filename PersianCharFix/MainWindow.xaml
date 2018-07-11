@@ -9,9 +9,11 @@
     <Grid FlowDirection="RightToLeft">
         <TextBlock Name="txtTitle" Text="فایل خود را انتخاب کنید:" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0,15,0,0"/>
         <Button Name="btnFileDialog" Content="انتخاب" HorizontalAlignment="Center" VerticalAlignment="top" Width="75" Height="35" Click="btnFileDialog_Click" Margin="0,50,0,0"/>
-        <TextBox Name="txtSource" HorizontalAlignment="left" VerticalAlignment="Top" TextWrapping="Wrap" IsReadOnly="True" Height="200" Width="225" Margin="25,100,0,0"/>
-        <Button Name="btnChecked" Content="تبدیل" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="35" Click="btnChecked_Click" Margin="0,35,0,0"/>
-        <TextBox Name="txtFixed" HorizontalAlignment="right" VerticalAlignment="Top" TextWrapping="Wrap" Height="200" Width="225" Margin="0,100,25,0"/>
+        <Label Name="lblSource" Content="پاراگراف فعلی" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" Visibility="Hidden"/>
+        <TextBox Name="txtSource" HorizontalAlignment="left" VerticalAlignment="Top" TextWrapping="Wrap" IsReadOnly="True" Height="250" Width="225" Margin="25,50,0,0" Visibility="Hidden"/>
+        <Button Name="btnChecked" Content="تبدیل >>" HorizontalAlignment="Center" VerticalAlignment="Center" Width="65" Height="35" Click="btnChecked_Click" Margin="0,0,0,0" Visibility="Hidden"/>
+        <Label Name="lblFixed" Content="پاراگراف اصلاح شده" HorizontalAlignment="right" VerticalAlignment="Top" Margin="0,25,25,0" Visibility="Hidden"/>
+        <TextBox Name="txtFixed" HorizontalAlignment="right" VerticalAlignment="Top" TextWrapping="Wrap" Height="250" Width="225" Margin="0,50,25,0" Visibility="Hidden"/>
         <ProgressBar Name="progressBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="225" Height="35" Margin="0,0,0,15"/>
     </Grid>
 </Window>

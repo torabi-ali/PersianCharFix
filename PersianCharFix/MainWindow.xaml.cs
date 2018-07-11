@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Win32;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 
 namespace PersianCharFix
@@ -25,6 +26,7 @@ namespace PersianCharFix
             bw.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker_ProgressChanged);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            bw.WorkerReportsProgress = true;
         }
 
         public string CleanWord(string prg)
@@ -48,6 +50,12 @@ namespace PersianCharFix
                 {
                     txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
                     btnFileDialog.Visibility = Visibility.Hidden;
+
+                    lblSource.Visibility = Visibility.Visible;
+                    txtSource.Visibility = Visibility.Visible;
+                    btnChecked.Visibility = Visibility.Visible;
+                    lblFixed.Visibility = Visibility.Visible;
+                    txtFixed.Visibility = Visibility.Visible;
                 });
 
                 try
@@ -55,9 +63,14 @@ namespace PersianCharFix
                     using (WordprocessingDocument doc = WordprocessingDocument.Open(fileDialog.FileName, true))
                     {
                         var document = doc.MainDocumentPart.Document.Body;
+                        var prgTotal = document.Descendants<Paragraph>().Count();
+                        var prgProgress = 0;
 
                         foreach (var paragraph in document.Descendants<Paragraph>())
                         {
+                            if (paragraph.InnerText.Equals(""))
+                                continue;
+
                             txtChecked = false;
                             string prgFixed = CleanWord(paragraph.InnerText);
 
@@ -76,6 +89,10 @@ namespace PersianCharFix
                             {
                                 paragraph.InnerXml = paragraph.InnerXml.Replace(paragraph.InnerText, txtFixed.Text);
                             });
+
+                            prgProgress++;
+                            var progress = (100 * prgProgress / prgTotal);
+                            bw.ReportProgress(progress);
                         }
                     }
                     e.Result = FunctionResult.Done;
