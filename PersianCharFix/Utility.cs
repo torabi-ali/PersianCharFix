@@ -2,27 +2,6 @@
 {
     public static class Utility
     {
-        public static string FixChars(this string data)
-        {
-            var str = data.EmptyIfNull().CleanString()
-                .Replace(" می ", " می‌")
-                .Replace(" ای", "‌ای")
-                .Replace(" ها ", "‌ها ")
-                .Replace(" های ", "‌های ")
-                .Replace(" تر ", "‌تر ")
-                .Replace(" ترین ", "‌ترین ")
-                .Replace(" . ", ".-.")
-                .Replace(". ", ".-.")
-                .Replace(" .", ".-.")
-                .Replace(".-.", ". ")
-                .Replace(" ، ", "،-،")
-                .Replace("، ", "،-،")
-                .Replace(" ،", "،-،")
-                .Replace("،-،", "، ");
-
-            return str.NullIfEmpty();
-        }
-
         public static string EmptyIfNull(this string str)
         {
             return (str == null ? "" : str);
@@ -74,14 +53,27 @@
                     .Replace('٩', '9');
         }
 
-        public static string FixPersianChars(this string str)
+        public static string FixArabicChars(this string str)
         {
             return str.Replace('ﮎ', 'ک').Replace('ﮏ', 'ک').Replace('ﮐ', 'ک').Replace('ﮑ', 'ک').Replace('ك', 'ک').Replace('ي', 'ی').Replace('ئ', 'ی');
         }
 
-        public static string CleanString(this string str)
+        public static string FixPersianChars(this string str)
         {
-            return str.Trim().FixPersianChars().Fa2En();
+            return str.Replace(" می ", " می‌")
+                .Replace(" ای", "‌ای")
+                .Replace(" ها ", "‌ها ")
+                .Replace(" های ", "‌های ")
+                .Replace(" تر ", "‌تر ")
+                .Replace(" ترین ", "‌ترین ")
+                .Replace(" . ", ".-.")
+                .Replace(". ", ".-.")
+                .Replace(" .", ".-.")
+                .Replace(".-.", ". ")
+                .Replace(" ، ", "،-،")
+                .Replace("، ", "،-،")
+                .Replace(" ،", "،-،")
+                .Replace("،-،", "، ");
         }
     }
 }

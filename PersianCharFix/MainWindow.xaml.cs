@@ -13,6 +13,8 @@ namespace PersianCharFix
     public partial class MainWindow : Window
     {
         private static BackgroundWorker bw = new BackgroundWorker();
+        private bool txtChecked = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -23,6 +25,11 @@ namespace PersianCharFix
             bw.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker_ProgressChanged);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+        }
+
+        public string CleanWord(string prg)
+        {
+            return prg.Trim().FixArabicChars().FixPersianChars().Fa2En();
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -37,22 +44,45 @@ namespace PersianCharFix
 
             if (result == true)
             {
+                this.Dispatcher.Invoke(() =>
+                {
+                    txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
+                    btnFileDialog.Visibility = Visibility.Hidden;
+                });
+
                 try
                 {
                     using (WordprocessingDocument doc = WordprocessingDocument.Open(fileDialog.FileName, true))
                     {
-                        var document = doc.MainDocumentPart.Document;
+                        var document = doc.MainDocumentPart.Document.Body;
 
                         foreach (var paragraph in document.Descendants<Paragraph>())
                         {
-                            paragraph.InnerXml = paragraph.InnerXml.FixChars();
+                            txtChecked = false;
+                            string prgFixed = CleanWord(paragraph.InnerText);
+
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                txtSource.Text = paragraph.InnerText;
+                                txtFixed.Text = prgFixed;
+                            });
+
+                            while (!txtChecked)
+                            {
+                                System.Threading.Thread.Sleep(100);
+                            }
+
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                paragraph.InnerXml = paragraph.InnerXml.Replace(paragraph.InnerText, txtFixed.Text);
+                            });
                         }
                     }
                     e.Result = FunctionResult.Done;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: Could not read file from disk. Original error: {ex.Message}");
+                    MessageBox.Show($"Error: Could not read file from disk.{Environment.NewLine}{ex.Message}");
                 }
             }
             else
@@ -89,6 +119,11 @@ namespace PersianCharFix
                 progressBar.Value = 0;
                 bw.RunWorkerAsync();
             }
+        }
+
+        private void btnChecked_Click(object sender, RoutedEventArgs e)
+        {
+            txtChecked = true;
         }
     }
 }
