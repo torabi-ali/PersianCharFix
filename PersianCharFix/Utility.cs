@@ -61,7 +61,8 @@
         public static string FixPersianChars(this string str)
         {
             return str.Replace(" می ", " می‌")
-                .Replace(" ای", "‌ای")
+                .Replace(" ی ", "‌ی ")
+                .Replace(" ای ", "‌ای ")
                 .Replace(" ها ", "‌ها ")
                 .Replace(" های ", "‌های ")
                 .Replace(" تر ", "‌تر ")

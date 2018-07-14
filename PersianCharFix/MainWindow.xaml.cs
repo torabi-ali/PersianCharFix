@@ -46,22 +46,24 @@ namespace PersianCharFix
 
             if (result == true)
             {
-                this.Dispatcher.Invoke(() =>
-                {
-                    txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
-                    btnFileDialog.Visibility = Visibility.Hidden;
-
-                    lblSource.Visibility = Visibility.Visible;
-                    txtSource.Visibility = Visibility.Visible;
-                    btnChecked.Visibility = Visibility.Visible;
-                    lblFixed.Visibility = Visibility.Visible;
-                    txtFixed.Visibility = Visibility.Visible;
-                });
+                
 
                 try
                 {
                     using (WordprocessingDocument doc = WordprocessingDocument.Open(fileDialog.FileName, true))
                     {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
+                            btnFileDialog.Visibility = Visibility.Hidden;
+
+                            lblSource.Visibility = Visibility.Visible;
+                            txtSource.Visibility = Visibility.Visible;
+                            btnChecked.Visibility = Visibility.Visible;
+                            lblFixed.Visibility = Visibility.Visible;
+                            txtFixed.Visibility = Visibility.Visible;
+                        });
+
                         var document = doc.MainDocumentPart.Document.Body;
                         var prgTotal = document.Descendants<Paragraph>().Count();
                         var prgProgress = 0;
@@ -99,7 +101,15 @@ namespace PersianCharFix
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: Could not read file from disk.{Environment.NewLine}{ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}");
+                    e.Result = FunctionResult.Error;
+
+                    //The following code will restart the app (if needed).
+                    //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                    //this.Dispatcher.Invoke(() =>
+                    //{
+                    //    Application.Current.Shutdown();
+                    //});
                 }
             }
             else
