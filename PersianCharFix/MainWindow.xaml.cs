@@ -19,9 +19,7 @@ namespace PersianCharFix
         public MainWindow()
         {
             InitializeComponent();
-
-            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            mainWindow.ResizeMode = ResizeMode.NoResize;
+            MainWindowInitial();
 
             bw.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker_ProgressChanged);
@@ -29,7 +27,40 @@ namespace PersianCharFix
             bw.WorkerReportsProgress = true;
         }
 
-        public string CleanWord(string prg)
+        public void MainWindowInitial()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                mainWindow.ResizeMode = ResizeMode.NoResize;
+
+                txtTitle.Text = "فایل خود را انتخاب کنید:";
+                btnFileDialog.Visibility = Visibility.Visible;
+
+                lblSource.Visibility = Visibility.Hidden;
+                txtSource.Visibility = Visibility.Hidden;
+                btnChecked.Visibility = Visibility.Hidden;
+                lblFixed.Visibility = Visibility.Hidden;
+                txtFixed.Visibility = Visibility.Hidden;
+            });
+        }
+
+        public void MainWindowLivePreview()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
+                btnFileDialog.Visibility = Visibility.Hidden;
+
+                lblSource.Visibility = Visibility.Visible;
+                txtSource.Visibility = Visibility.Visible;
+                btnChecked.Visibility = Visibility.Visible;
+                lblFixed.Visibility = Visibility.Visible;
+                txtFixed.Visibility = Visibility.Visible;
+            });
+        }
+
+        public string CleanParagraph(string prg)
         {
             return prg.Trim().FixArabicChars().FixPersianChars().Fa2En();
         }
@@ -38,7 +69,7 @@ namespace PersianCharFix
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Title = "Open Word File ...";
+            fileDialog.Title = "انتخاب فایل";
             fileDialog.Filter = "Microsoft Word files|*.docx";
             fileDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
 
@@ -46,23 +77,11 @@ namespace PersianCharFix
 
             if (result == true)
             {
-                
-
                 try
                 {
                     using (WordprocessingDocument doc = WordprocessingDocument.Open(fileDialog.FileName, true))
                     {
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            txtTitle.Text = "تغییرات فایل‌ها را تأیید کنید:";
-                            btnFileDialog.Visibility = Visibility.Hidden;
-
-                            lblSource.Visibility = Visibility.Visible;
-                            txtSource.Visibility = Visibility.Visible;
-                            btnChecked.Visibility = Visibility.Visible;
-                            lblFixed.Visibility = Visibility.Visible;
-                            txtFixed.Visibility = Visibility.Visible;
-                        });
+                        MainWindowLivePreview();
 
                         var document = doc.MainDocumentPart.Document.Body;
                         var prgTotal = document.Descendants<Paragraph>().Count();
@@ -74,7 +93,7 @@ namespace PersianCharFix
                                 continue;
 
                             txtChecked = false;
-                            string prgFixed = CleanWord(paragraph.InnerText);
+                            string prgFixed = CleanParagraph(paragraph.InnerText);
 
                             this.Dispatcher.Invoke(() =>
                             {
@@ -93,8 +112,7 @@ namespace PersianCharFix
                             });
 
                             prgProgress++;
-                            var progress = (100 * prgProgress / prgTotal);
-                            bw.ReportProgress(progress);
+                            bw.ReportProgress(100 * prgProgress / prgTotal);
                         }
                     }
                     e.Result = FunctionResult.Done;
@@ -129,14 +147,15 @@ namespace PersianCharFix
 
             if (result == FunctionResult.Done)
             {
-                MessageBox.Show("It's successfully Done!", "Done", MessageBoxButton.OK, MessageBoxImage.Information);
                 progressBar.Value = 100;
+                MessageBox.Show("اصلاحات در فایل ذخیره شد", "Done", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (result == FunctionResult.Error)
             {
-                MessageBox.Show("An Error has occurred. Please check the file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("خطایی رخ داده است. لطفاً فایل خود را بررسی کنید", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+            MainWindowInitial();
         }
 
         private void btnFileDialog_Click(object sender, RoutedEventArgs e)
