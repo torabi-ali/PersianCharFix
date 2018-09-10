@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using PersianCharFix.ViewModel;
 using System;
 using System.Windows;
 
@@ -29,7 +28,7 @@ namespace PersianCharFix.View
 
             if (result == true)
             {
-                var charFixWindow = new CharFixWindow(new CharFixViewModel(fileDialog.FileName));
+                var charFixWindow = new CharFixWindow(fileDialog.FileName);
                 charFixWindow.Show();
                 this.Close();
             }

@@ -129,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2CC8DFDB70AD4EF6946090DE29B6A537"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_323573139F17CC591589314263EC4568"
         "OwnerKey" = "8:_CFCD6D9B53E148EB8D30A21415E135BB"
         "MsmSig" = "8:_UNDEFINED"
@@ -503,12 +509,6 @@
         {
         "MsmKey" = "8:_F9B50725163A31BB40F59D83F7C7FFFC"
         "OwnerKey" = "8:_C4F23B239C1195EEBA57190423E7C95C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CCF946ADB8BFF827FC1A93899A2B1F96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -965,6 +965,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5382F202A09A143F38C0E527A1A81163"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CCF946ADB8BFF827FC1A93899A2B1F96"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1649,6 +1655,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CC8DFDB70AD4EF6946090DE29B6A537"
+            {
+            "SourcePath" = "8:..\\PersianCharFix\\Resource\\Help.html"
+            "TargetName" = "8:Help.html"
+            "Tag" = "8:"
+            "Folder" = "8:_6A01EC3168E747FABEB074E72CEF047E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_323573139F17CC591589314263EC4568"
@@ -3526,7 +3552,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PersianCharFix"
         "ProductCode" = "8:{F666AC92-1776-4212-87AB-A352688CB83D}"
-        "PackageCode" = "8:{C7D881C6-8DDB-42E0-A977-4B118BC4C5B3}"
+        "PackageCode" = "8:{23E952AB-C291-4573-97E4-D159A567BF3C}"
         "UpgradeCode" = "8:{146330D3-79B2-4409-A727-6C9BF6511A66}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3655,9 +3681,23 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_CFCD6D9B53E148EB8D30A21415E135BB"
-            "Folder" = "8:_FA0B9ADAFAEC4B71B82CD5AF9453CFBC"
+            "Folder" = "8:_7D6BFC5B49AB47E8AFDA030B68E31118"
             "WorkingFolder" = "8:_6A01EC3168E747FABEB074E72CEF047E"
             "Icon" = "8:_753123A0E9EF49D3BB8C3DE48A49BDF3"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D91286B89A7540F49C55AE186B185B6A"
+            {
+            "Name" = "8:PersianCharFix"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_CFCD6D9B53E148EB8D30A21415E135BB"
+            "Folder" = "8:_FA0B9ADAFAEC4B71B82CD5AF9453CFBC"
+            "WorkingFolder" = "8:_6A01EC3168E747FABEB074E72CEF047E"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -4061,7 +4101,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CFCD6D9B53E148EB8D30A21415E135BB"
             {
-            "SourcePath" = "8:..\\PersianCharFix\\obj\\Release\\PersianCharFix.exe"
+            "SourcePath" = "8:..\\PersianCharFix\\obj\\Debug\\PersianCharFix.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6A01EC3168E747FABEB074E72CEF047E"

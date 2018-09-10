@@ -141,8 +141,8 @@
     <Compile Include="Model\FunctionResult.cs" />
     <Compile Include="Helpers\CharFix.cs" />
     <Page Include="View\CharFixWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -152,7 +152,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\CharFixViewModel.cs" />
     <Compile Include="ViewModel\ParagraphFixViewModel.cs" />
     <Compile Include="View\CharFixWindow.xaml.cs">
       <DependentUpon>CharFixWindow.xaml</DependentUpon>
@@ -185,6 +184,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Resource\Help.html" />
     <Resource Include="Resource\Fonts\Samim-Bold.ttf" />
     <Resource Include="Resource\Fonts\Samim.ttf" />
   </ItemGroup>

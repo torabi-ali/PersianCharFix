@@ -1,12 +1,15 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using PersianCharFix.Helpers;
 using PersianCharFix.Model;
 using PersianCharFix.ViewModel;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PersianCharFix.View
 {
@@ -17,12 +20,12 @@ namespace PersianCharFix.View
     {
         private static BackgroundWorker bw = new BackgroundWorker();
         private bool txtChecked = false;
-        private CharFixViewModel _CharFixViewModel;
+        private string FilePath;
 
-        public CharFixWindow(CharFixViewModel charFixViewModel)
+        public CharFixWindow(string filePath)
         {
             InitializeComponent();
-            _CharFixViewModel = charFixViewModel;
+            FilePath = filePath;
             charFixWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             charFixWindow.ResizeMode = ResizeMode.NoResize;
 
@@ -34,16 +37,11 @@ namespace PersianCharFix.View
             bw.RunWorkerAsync();
         }
 
-        public string CleanParagraph(string prg)
-        {
-            return prg.Trim().FixArabicChars().FixPersianChars().Fa2En();
-        }
-
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                using (WordprocessingDocument doc = WordprocessingDocument.Open(_CharFixViewModel.FilePath, true))
+                using (WordprocessingDocument doc = WordprocessingDocument.Open(FilePath, true))
                 {
                     var document = doc.MainDocumentPart.Document.Body;
                     var prgTotal = document.Descendants<Paragraph>().Count();
@@ -55,12 +53,18 @@ namespace PersianCharFix.View
                             continue;
 
                         txtChecked = false;
-                        string prgFixed = CleanParagraph(paragraph.InnerText);
+                        var par = new ParagraphFixViewModel(paragraph.InnerText);
 
                         this.Dispatcher.Invoke(() =>
                         {
-                            txtSource.Text = paragraph.InnerText;
-                            txtFixed.Text = prgFixed;
+                            txtSource.Text = par.OldText;
+                            txtFixed.Text = par.AutoFixedText;
+
+                            if (par.HasChanged)
+                                txtFixed.Background = Brushes.LightYellow;
+
+                            else
+                                txtFixed.Background = Brushes.LightGreen;
                         });
 
                         while (!txtChecked)
@@ -70,7 +74,9 @@ namespace PersianCharFix.View
 
                         this.Dispatcher.Invoke(() =>
                         {
+                            par.FinalText = txtFixed.Text;
                             paragraph.InnerXml = paragraph.InnerXml.Replace(paragraph.InnerText, txtFixed.Text);
+                            //paragraph.InnerXml = paragraph.InnerXml.Replace(par.OldText, par.FinalText); Surprisingly it's not working! :|
                         });
 
                         prgProgress++;
@@ -113,6 +119,19 @@ namespace PersianCharFix.View
         private void btnChecked_Click(object sender, RoutedEventArgs e)
         {
             txtChecked = true;
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            string path = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\Help.html";
+            if (File.Exists(path))
+            {
+                Process.Start(new ProcessStartInfo(path));
+            }
+            else
+            {
+                MessageBox.Show($"فایل راهنما یافت نشد!{Environment.NewLine}{path}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
