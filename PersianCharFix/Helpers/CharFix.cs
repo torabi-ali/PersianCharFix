@@ -1,6 +1,6 @@
-﻿namespace PersianCharFix
+﻿namespace PersianCharFix.Helpers
 {
-    public static class Utility
+    public static class CharFix
     {
         public static string EmptyIfNull(this string str)
         {

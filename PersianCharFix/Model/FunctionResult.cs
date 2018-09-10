@@ -1,4 +1,4 @@
-﻿namespace PersianCharFix
+﻿namespace PersianCharFix.Model
 {
     public enum FunctionResult : byte
     {
