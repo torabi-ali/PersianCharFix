@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersianCharFix", "PersianCharFix\PersianCharFix.csproj", "{0F65348F-F819-43D4-9BBF-96154181BB0F}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PersianCharFix.Setup", "PersianCharFix.Setup\PersianCharFix.Setup.vdproj", "{D7FB630F-8889-40D5-BD28-266EF1A3109B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{0F65348F-F819-43D4-9BBF-96154181BB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F65348F-F819-43D4-9BBF-96154181BB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F65348F-F819-43D4-9BBF-96154181BB0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7FB630F-8889-40D5-BD28-266EF1A3109B}.Debug|Any CPU.ActiveCfg = Debug
-		{D7FB630F-8889-40D5-BD28-266EF1A3109B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

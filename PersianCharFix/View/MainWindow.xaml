@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Icon="/Resource/Icon.ico"
         Title="اصلاح نویسه‌های فارسی" Name="mainWindow" Height="300" Width="400" FontFamily="{StaticResource Samim}">
-    <Grid FlowDirection="RightToLeft">
+    <Grid FlowDirection="RightToLeft" Margin="3,3,3,3">
         <TextBlock Name="txtTitle" Text="فایل خود را انتخاب کنید:" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0,15,0,0"/>
         <Button Name="btnFileDialog" Content="انتخاب" HorizontalAlignment="Center" VerticalAlignment="top" Width="75" Height="35" Click="btnFileDialog_Click" Margin="0,50,0,0"/>
         <TextBlock Name="txtIntro" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Height="125" Width="350"/>

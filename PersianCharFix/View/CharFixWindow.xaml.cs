@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using static System.Environment;
 
 namespace PersianCharFix.View
 {
@@ -26,8 +27,6 @@ namespace PersianCharFix.View
         {
             InitializeComponent();
             FilePath = filePath;
-            charFixWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            charFixWindow.ResizeMode = ResizeMode.NoResize;
 
             bw.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker_ProgressChanged);
@@ -130,7 +129,7 @@ namespace PersianCharFix.View
             }
             else
             {
-                MessageBox.Show($"فایل راهنما یافت نشد!{Environment.NewLine}{path}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"فایل راهنما یافت نشد!{NewLine}{path}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

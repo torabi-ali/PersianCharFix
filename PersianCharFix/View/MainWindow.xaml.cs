@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Windows;
+using static System.Environment;
 
 namespace PersianCharFix.View
 {
@@ -13,7 +13,7 @@ namespace PersianCharFix.View
         {
             InitializeComponent();
             txtIntro.Text = "کارکترهای چندگانه و نویسه‌های غیرفارسی که سال‌ها در متون فارسی مخصوصاً در صفحات وب جا خوش کرده‌اند و مورد استفاده مجدد در تحقیقات علمی قرار گرفته‌اند.";
-            txtIntro.Text += $"{Environment.NewLine}ما را بر آن داشت تا با ایجاد این برنامه به از بین بردن آن‌ها بپردازیم.";
+            txtIntro.Text += $"{NewLine}ما را بر آن داشت تا با ایجاد این برنامه به از بین بردن آن‌ها بپردازیم.";
         }
 
         private void btnFileDialog_Click(object sender, RoutedEventArgs e)
@@ -22,7 +22,7 @@ namespace PersianCharFix.View
             fileDialog.Multiselect = false;
             fileDialog.Title = "انتخاب فایل";
             fileDialog.Filter = "Microsoft Word File|*.docx";
-            fileDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
+            fileDialog.InitialDirectory = SpecialFolder.MyDocuments.ToString();
 
             var result = fileDialog.ShowDialog();
 

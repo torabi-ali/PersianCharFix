@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Icon="/Resource/Icon.ico"
         Title="اصلاح نویسه‌های فارسی" Name="charFixWindow" Height="400" Width="600" FontFamily="{StaticResource Samim}">
-    <Grid FlowDirection="RightToLeft">
+    <Grid FlowDirection="RightToLeft" Margin="3,3,3,3">
         <Label Name="lblSource" Content="پاراگراف فعلی" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
         <TextBox Name="txtSource" HorizontalAlignment="left" VerticalAlignment="Top" TextWrapping="Wrap" IsReadOnly="True" Height="250" Width="225" Margin="25,50,0,0"/>
         <Button Name="btnHelp" Content="؟" HorizontalAlignment="Center" VerticalAlignment="Top" Width="25" Height="25" Click="btnHelp_Click" Margin="0,75,0,0" Foreground="Blue" Background="White" FontSize="15" FontWeight="Bold"/>
