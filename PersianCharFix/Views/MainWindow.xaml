@@ -1,0 +1,27 @@
+﻿<Window x:Class="PersianCharFix.MainWindow" WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helpers="clr-namespace:PersianCharFix.Helpers"
+        xmlns:vm="clr-namespace:PersianCharFix.ViewModels"
+        DataContext="{DynamicResource MainViewModel}"
+        helpers:DialogCloser.DialogResult="{Binding CloseWindowFlag}"
+        mc:Ignorable="d"
+        Icon="/Resource/Icon.ico"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Title="اصلاح نویسه‌های فارسی" Name="mainWindow" Height="300" Width="400" FontFamily="{StaticResource Vazir}">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="MainViewModel"/>
+    </Window.Resources>
+    <Grid FlowDirection="RightToLeft" Margin="25">
+        <TextBlock Name="txtIntro" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Height="250" Width="Auto"/>
+        <Button Name="btnCancel" Command="{Binding CancelCommand}" Content="بستن" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" />
+        <Button Name="btnFileDialog" Command="{Binding CharFixCommand}" Content="انتخاب" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+    </Grid>
+</Window>

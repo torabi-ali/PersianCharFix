@@ -8,11 +8,18 @@
 AppId={{AF726F6F-0ACC-4AAB-81BE-A11488C9D0A7}
 AppName=PersianCharFix
 AppVersion=1.2
-;AppVerName=PersianCharFix 1.2
+AppVerName=PersianCharFix 1.2
+AppPublisher=Ali Torabi
+AppPublisherURL=https://github.com/torabi-ali
+AppSupportURL=https://github.com/torabi-ali/PersianCharFix
+AppUpdatesURL=https://github.com/torabi-ali/PersianCharFix
 DefaultDirName={pf}\PersianCharFix
+DisableDirPage=yes
 DisableProgramGroupPage=yes
 OutputBaseFilename=PersianCharFix-Setup
+OutputDir=Setup
 SetupIconFile=C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\Resource\icon.ico
+AllowNoIcons=0
 Compression=lzma
 SolidCompression=yes
 
@@ -24,28 +31,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\PersianCharFix.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\DocumentFormat.OpenXml.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\DocumentFormat.OpenXml.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\Microsoft.Win32.Primitives.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\PersianCharFix.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.AppContext.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Console.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Diagnostics.DiagnosticSource.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Diagnostics.DiagnosticSource.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Globalization.Calendars.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.IO.Compression.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.IO.Compression.ZipFile.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.IO.FileSystem.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.IO.FileSystem.Primitives.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.IO.Packaging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Net.Http.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Net.Sockets.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Security.Cryptography.Algorithms.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Security.Cryptography.Encoding.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Security.Cryptography.Primitives.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Security.Cryptography.X509Certificates.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\System.Xml.ReaderWriter.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\bin\Debug\*.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Ali\Documents\Visual Studio 2017\Projects\PersianCharFix\PersianCharFix\Resource\Help.html"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
