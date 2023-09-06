@@ -1,3 +1,6 @@
+# Skip static files
+Wpf/Assets/** linguist-vendored
+
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
