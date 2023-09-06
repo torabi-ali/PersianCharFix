@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <OutputType>WinExe</OutputType>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <SatelliteResourceLanguages>En</SatelliteResourceLanguages>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>2.0.0</Version>
+        <Authors>Ali Torabi</Authors>
+        <RepositoryType>Git</RepositoryType>
+        <Copyright>Copyright © Ali Torabi</Copyright>
+        <AssemblyName>PersianCharFix</AssemblyName>
+        <RepositoryUrl>https://github.com/torabi-ali/PersianCharFix</RepositoryUrl>
+        <Description>PersianCharFix is a windows application developed to download Bing images everday and store it in your local computer.</Description>
+        <PackageIcon>Assets\icon.ico</PackageIcon>
+        <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="Assets\*.*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="Assets\**\*.*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="NLog.config" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
+        <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+        <PackageReference Include="NLog.Extensions.Logging" Version="5.3.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\App\App.csproj" />
+    </ItemGroup>
+
+</Project>
