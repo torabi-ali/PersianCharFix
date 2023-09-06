@@ -1,13 +1,10 @@
-﻿namespace App.Utility
+﻿using System.Text.RegularExpressions;
+
+namespace App.Utility
 {
     public static class StringHelper
     {
-        public static string NullIfEmpty(this string str)
-        {
-            return str == "" ? null : str;
-        }
-
-        public static string Fa2En(this string str)
+        public static string Fa2En(string str)
         {
             return str
                     .Replace("۰", "0")
@@ -33,9 +30,9 @@
                     .Replace("٩", "9");
         }
 
-        public static string FixPersianChars(this string str)
+        public static string FixPersianChars(string str)
         {
-            string result = str.Replace('ﮎ', 'ک').Replace('ﮏ', 'ک').Replace('ﮐ', 'ک').Replace('ﮑ', 'ک').Replace('ك', 'ک'); // تصحیح ک
+            var result = str.Replace('ﮎ', 'ک').Replace('ﮏ', 'ک').Replace('ﮐ', 'ک').Replace('ﮑ', 'ک').Replace('ك', 'ک'); // تصحیح ک
             result = result.Replace('ٱ', 'ا').Replace('ٵ', 'ا'); // تصحیح الف
             result = result.Replace('ي', 'ی').Replace('ئ', 'ی'); // تصحیح ی
             result = result.Replace('ة', 'ه'); // تصحیح ه
@@ -49,16 +46,17 @@
 
         public static string CleanString(this string str)
         {
-            return str.Trim().FixPersianChars().RemoveBlankSpaces().Fa2En().NullIfEmpty();
+            var result = str.Trim();
+            result = FixPersianChars(result);
+            result = Fa2En(result);
+            result = RemoveBlankSpaces(result);
+
+            return result;
         }
 
-        public static string RemoveBlankSpaces(this string text)
+        public static string RemoveBlankSpaces(string text)
         {
-            while (text.Contains("  "))
-            {
-                text = text.Replace("  ", " ");
-            }
-            return text;
+            return Regex.Replace(text, @"\s\s+", " ");
         }
     }
 }

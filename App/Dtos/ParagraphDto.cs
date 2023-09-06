@@ -10,9 +10,9 @@ public class ParagraphDto
 
     public bool HasChanged { get; set; }
 
-    public ParagraphDto(string _originalText)
+    public ParagraphDto(string originalText)
     {
-        OriginalText = _originalText;
+        OriginalText = originalText;
         FixedText = OriginalText.CleanString();
 
         if (OriginalText.Equals(FixedText))
