@@ -7,7 +7,7 @@
   <h3 align="center">Persian Character Fix</h3>
 
   <p align="center">
-    Download Bing image everyday!
+      Fix non-persian characters in bulk with supervision on each paragraph
     <br />
     <a href="https://github.com/torabi-ali/PersianCharFix"><strong>Explore the docs »</strong></a>
     <br />
@@ -25,7 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About Persian Character Fix
 
-Usually there are so many issues with old written Farsi/Persian texts. They contain so many characters which are not really persian and they should be replaced. This app helps you do that in bulk with supervision on ech paragraph.
+Usually there are so many issues with old written Farsi/Persian texts. They contain so many characters which are not really persian and they should be replaced. This app helps you do that in bulk with supervision on each paragraph.
 
 
 
