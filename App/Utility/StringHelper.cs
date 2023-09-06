@@ -56,7 +56,7 @@ namespace App.Utility
 
         public static string RemoveBlankSpaces(string text)
         {
-            return Regex.Replace(text, @"\s\s+", " ");
+            return Regex.Replace(text, @"\s{2,}", " ");
         }
     }
 }

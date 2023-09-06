@@ -22,7 +22,7 @@ public partial class App : Application
         currentDomain.UnhandledException += CurrentDomain_UnhandledException;
     }
 
-    private void ConfigureServices(ServiceCollection services)
+    private static void ConfigureServices(ServiceCollection services)
     {
         services.AddLogging(logBuilder =>
         {
@@ -44,7 +44,7 @@ public partial class App : Application
         var logger = ServiceProvider.GetRequiredService<ILogger<App>>();
 
         var ex = (Exception)e.ExceptionObject;
-        logger.LogError(ex, $"Error from sender: {sender}");
+        logger.LogError(ex, "Error from sender: {sender}", sender);
     }
 }
 

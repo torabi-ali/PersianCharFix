@@ -21,12 +21,12 @@ public class CharacterFixService : ICharacterFixService
         using var doc = WordprocessingDocument.Open(filePath, false);
         var document = doc.MainDocumentPart.Document.Body;
         var paragraphs = document.Descendants<Paragraph>().Where(p => !string.IsNullOrEmpty(p.InnerText)).ToList();
-        for (var i = 0; i < paragraphs.Count(); i++)
+        for (var i = 0; i < paragraphs.Count; i++)
         {
             result.Add(new ParagraphDto(paragraphs[i].InnerText));
         }
 
-        _logger.LogInformation($"Total of {paragraphs.Count()} paragraphs loaded from {filePath}");
+        _logger.LogInformation("Total of {paragraphsCount} paragraphs loaded from {filePath}", paragraphs.Count, filePath);
 
         return result;
     }
@@ -36,7 +36,7 @@ public class CharacterFixService : ICharacterFixService
         using var doc = WordprocessingDocument.Open(filePath, true);
         var document = doc.MainDocumentPart.Document.Body;
         var paragraphs = document.Descendants<Paragraph>().Where(p => !string.IsNullOrEmpty(p.InnerText)).ToList();
-        for (var i = 0; i < paragraphs.Count(); i++)
+        for (var i = 0; i < paragraphs.Count; i++)
         {
             if (result[i].HasChanged)
             {
@@ -44,6 +44,6 @@ public class CharacterFixService : ICharacterFixService
             }
         }
 
-        _logger.LogInformation($"Total of {paragraphs.Count()} paragraphs saved to {filePath}");
+        _logger.LogInformation("Total of {paragraphsCount} paragraphs saved to {filePath}", paragraphs.Count, filePath);
     }
 }
